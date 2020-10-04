@@ -7,12 +7,17 @@ Joãozinho está fazendo uma coleção de dados de todos os carros que ele já v
 |Request Type|URL  |Content|
 |--|--|--|
 |POST  |[https://us-central1-atividade-unipam.cloudfunctions.net/insertCar](https://www.google.com/url?q=https%3A%2F%2Fus-central1-atividade-unipam.cloudfunctions.net%2FinsertCar)  |	{"**plate**": string, "**color**": string, "**price**": string, "**model**":string, "**brand**":string }  |
+|GET|[https://us-central1-atividade-unipam.cloudfunctions.net/getCar?plate=CDD-5200](https://www.google.com/url?q=https%3A%2F%2Fus-central1-atividade-unipam.cloudfunctions.net%2FgetCar?plate=CDD-5200)  |	{"**plate**": string }  |
 
 
 ## Screenshots - Insert Car
-Soon.
+- **Request**
+![Requisição POST](https://i.imgur.com/XLYcq4p.png)
+- **Data on Firestore**
+![Dados no Firestore](https://i.imgur.com/wDGC9G1.png)
 ## Screenshots - Get Car
-Soon.
+- Request
+	![Requisição GET](https://i.imgur.com/76hBECS.png)
 
 ## Team
 

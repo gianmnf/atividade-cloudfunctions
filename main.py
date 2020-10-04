@@ -1,3 +1,4 @@
+from flask import jsonify
 from google.cloud import firestore
 
 def insertCar(request):
@@ -22,7 +23,7 @@ def insertCar(request):
     car = car_ref.get()
 
     if car.exists:
-        return 'This car already exists in the database!'
+        return 'This car already exists in the database!', 409
     else:
         car_ref.set({
             'plate': plate,
@@ -31,4 +32,27 @@ def insertCar(request):
             'model': model,
             'brand': brand
         })
-        return 'The car with the plate ' + plate + ' was added successfully.'
+        return 'The car with the plate ' + plate + ' was added successfully!', 200
+
+def getCar(request):
+    request_json = request.get_json()
+    request_json = request.get_json()
+    def getAttribute(attr):
+        if request.args and attr in request.args:
+            return request.args.get(attr)
+        elif request_json and attr in request_json:
+            return request_json[attr]
+        else:
+            return null
+    plate = getAttribute('plate')
+
+    db = firestore.Client()
+
+    car_ref = db.collection('cars').document(plate)
+
+    car = car_ref.get()
+
+    if car.exists:
+        return jsonify(car.to_dict()), 200
+    else:
+        return 'This car was not found.', 404
