@@ -36,7 +36,6 @@ def insertCar(request):
 
 def getCar(request):
     request_json = request.get_json()
-    request_json = request.get_json()
     def getAttribute(attr):
         if request.args and attr in request.args:
             return request.args.get(attr)
